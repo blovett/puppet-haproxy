@@ -12,6 +12,9 @@ global
 <% if scope.lookupvar('haproxy::params::global_daemon') -%>
 	daemon
 <% end -%>
+<% if scope.lookupvar('haproxy::params::global_stats_socket') -%>
+	stats socket <%= scope.lookupvar('haproxy::params::global_stats_socket_path') %> mode <%= scope.lookupvar('haproxy::params::global_stats_socket_mode') %> level <%= scope.lookupvar('haproxy::params::global_stats_socket_level') %>
+<% end -%>
 <% if scope.lookupvar('haproxy::params::global_debug') -%>
 	debug
 <% end -%>

@@ -103,6 +103,27 @@ class haproxy::params {
 	}
 	
 	$global_chroot = $haproxy_global_chroot
+
+	$global_stats_socket = $haproxy_global_stats_socket ? {
+		'true'	=> true,
+		'false'	=> false,
+		default	=> false,
+	}
+
+	$global_stats_socket_path = $haproxy_global_stats_socket_path ? {
+		''		=> '/tmp/haproxy.sock',
+		default	=> $haproxy_global_stats_socket_path,
+	}
+
+	$global_stats_socket_mode = $haproxy_global_stats_socket_mode ? {
+		''		=> 600,
+		default	=> $haproxy_global_stats_socket_mode,
+	}
+	
+	$global_stats_socket_level = $haproxy_global_stats_socket_level ? {
+		''		=> 'operator',
+		default	=> $haproxy_global_stats_socket_level,
+	}
 	
 	# Default defaults params
 	$defaults_log = $haproxy_defaults_log ? {
