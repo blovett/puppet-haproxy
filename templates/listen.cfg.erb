@@ -9,7 +9,7 @@ listen <%= name %> <%= ip %>:<%= port %>
 <% end -%>
 <% if hash_type == 'manual' -%>
 <% servers.each do |server| -%>
-	server <%= server['name'] %> <%= server['ip'] %>:<%= server['port'] || port %><% if server['maxconn'] -%> maxconn <%= server['maxconn'] %><% end -%><% if cookie -%> cookie <%= server['name'] %><% end -%><% if server_check -%> check inter <%= check_inter %> fall <%= check_fall %><% end %>
+	server <%= server['name'] %> <%= server['ip'] %>:<%= server['port'] || port %><% if server['maxconn'] -%> maxconn <%= server['maxconn'] %><% end -%><% if cookie -%> cookie <%= server['name'] %><% end -%><% if server_check -%> check inter <%= check_inter %> fall <%= check_fall %><% end -%><% if server['backup'] -%> backup<% end %>
 <% end -%>
 <% elsif hash_type == 'mcollective' -%>
 <% nodes = Puppet::Util::MongoQuery.instance.find_nodes(query) -%>
