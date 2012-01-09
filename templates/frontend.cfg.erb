@@ -1,10 +1,10 @@
-<% if ip.class == Array -%>
 frontend <%= name %>
+<% if ip.class == Array -%>
 <% ip.each do |ipargs| -%>
 	bind	<%= ipargs["ip"] %>:<%= ipargs["port"] %> <%= ipargs["bind_opts"] %>
 <% end -%>
 <% else -%>
-frontend <%= name %> <%= ip %>:<%= port %>
+	bind	<%= ip %>:<%= port %> <% if bind_opts -%><%= bind_opts %><% end %>
 <% end -%>
 	mode <%= mode %>
 <% options.each do |option| -%>

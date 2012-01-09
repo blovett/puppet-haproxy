@@ -1,4 +1,11 @@
-listen <%= name %> <%= ip %>:<%= port %>
+listen <%= name %>
+<% if ip.class == Array -%>
+<% ip.each do |ipargs| -%>
+	bind <%= ipargs["ip"] %>:<%= ipargs["port"] %> <%= ipargs["bind_opts"] %>
+<% end -%>
+<% else -%>
+	bind <%= ip %>:<%= port %><% if bind_opts != '' -%> <%= bind_opts %><% end %>
+<% end -%>
 	mode <%= mode %>
 	balance <%= balance %>
 <% if maxconn != '' -%>

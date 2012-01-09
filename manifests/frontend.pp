@@ -1,6 +1,7 @@
 define haproxy::frontend ($order           = 30,
 													$ip              = $ipaddress,
 													$port            = '80',
+													$bind_opts       = '',
 													$mode            = 'http',
 													$options         = [],
 													$acls            = [],
